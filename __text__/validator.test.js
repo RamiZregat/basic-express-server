@@ -5,7 +5,7 @@ const validatorMiddleware = require('../src/middleware/validator');
 describe('Validator Middleware', () => {
 
 let consoleSpy;
-let req = {}; 
+let req = {query:{name:'rami'}}; 
 let res = {}; 
 let next = jest.fn();
 
@@ -28,7 +28,7 @@ beforeEach(() => {
 
   test('check if the name correct', () => {
     validatorMiddleware(req, res, next);
-    expect(next).toBe(req.query.name);
+    expect(next).toHaveBeenCalled();
   });
 
 })
